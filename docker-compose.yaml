@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: ./
+    volumes:
+      - .:/app
+    command: npm run start
+    ports:
+      - "3050:3050"
+      - "3051:3051"
+    restart: always
