@@ -90,7 +90,7 @@ export default function ChartRadar() {
                     src="https://cdn.jsdelivr.net/npm/chart.js"
                     onLoad={handleOnLoad}
                 />
-                <p>hi</p>
+                <p>hi, i am from dev.</p>
             </div>
         </>
     )
