@@ -5,8 +5,8 @@ import { useRef, useEffect, useState } from "react"
 
 export default function ChartRadar() {
     const chartRef = useRef()
-    const [datasetsData1, setDatasetsData1] = useState([60, 59, 90, 81, 56, 55, 40])
-    const [datasetsData2, setDatasetsData2] = useState([28, 48, 40, 19, 96, 27, 100])
+    const [datasetsData1, setDatasetsData1] = useState([80, 80, 80, 80, 80, 80, 80])
+    const [datasetsData2, setDatasetsData2] = useState([75, 48, 40, 19, 96, 27, 100])
 
     const configData = {
         labels: [
@@ -91,7 +91,7 @@ export default function ChartRadar() {
                     onLoad={handleOnLoad}
                 />
                 <div>
-                    <p>hi, i am from dev.</p>
+                    <p>hi, i am from dev. i am in the branch feature1.</p>
                 </div>
             </div>
         </>
