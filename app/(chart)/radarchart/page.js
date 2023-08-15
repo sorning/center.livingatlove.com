@@ -82,17 +82,17 @@ export default function ChartRadar() {
 
     return (
         <>
-            <div className="flex items-center justify-between h-2/4 w-1/2">
+            <div >
+            {/* className="flex items-center justify-between h-2/4 w-1/2" */}
                 <canvas 
-                className="flex items-center justify-between h-2/4 w-1/2"
                 ref={chartRef} />
                 <Script
                     src="https://cdn.jsdelivr.net/npm/chart.js"
                     onLoad={handleOnLoad}
                 />
-                <div>
+                {/* <div>
                     <p>hi, i am from dev. i am in the branch feature1.</p>
-                </div>
+                </div> */}
             </div>
         </>
     )
