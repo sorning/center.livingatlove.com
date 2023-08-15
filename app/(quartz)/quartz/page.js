@@ -14,7 +14,6 @@ function classNames(...classes) {
 
 export default function Example() {
     const [quartzItems, setQuartzItems] = useState([])
-    const [quartzItemsImages, setQuartzItemsImages] = useState([])
 
     useEffect(() => {
         const q = query(collection(db, 'quartz'))
