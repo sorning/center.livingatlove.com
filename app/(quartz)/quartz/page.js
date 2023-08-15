@@ -30,15 +30,18 @@ export default function Example() {
     console.log('quartzItems', quartzItems[0])
     return (
         <div className="bg-white">
+            <div className='flex items-center justify-center w-full'>
+            <h1 className=" p-3 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Quartz Material Collection</h1>
+            </div>
+            
             {quartzItems.map((item, id) => {
                 return (
                     <li key={id}>
                         
-                        <div className="pt-6">
+                        <div className="pt-1">
                             {/* Image gallery */}
-                            <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+                            <div className="mx-auto mt-1 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                                 
-                               
                                 <div className="sm: rounded sm:w-full  lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
                                     <Image
                                         src={item.image1}
@@ -106,9 +109,11 @@ export default function Example() {
                                     <div>
                                         <h3 className="sr-only text-black">Info</h3>
                                         <div className="space-y-1">
-                                            <p className="text-base text-gray-900">Price:{item.Price}/Ton</p>
+                                            <p className="text-base text-gray-900">Price:{item.Price}$/Ton</p>
                                             <p className="text-base text-gray-900">Available Grade:{item.AvailableGrade}</p>
-                                            <p className="text-base text-gray-900">Available Quantity{item.Quantity}</p>
+                                            <p className="text-base text-gray-900">Available Quantity:{item.Quantity}</p>
+                                            <p className="text-base text-gray-900">Trader: {item.Trader}</p>
+                                            <p className="text-base text-gray-900">Place of Origin: {item.PlaceOfOrigin}</p>
                                         </div>
                                     </div>
                                     
