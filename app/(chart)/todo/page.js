@@ -17,12 +17,12 @@ export default function Todo(){
     const [total, setTotal]=useState(0)
 
     //add item to database
-    const addItem=async (e)=>{
-        e.preventDefault();
-        if (inputRef1.current!=''&&inputRef2.current!=''){
-            await addDoc()
-        }
-    }
+    // const addItem=async (e)=>{
+    //     e.preventDefault();
+    //     if (inputRef1.current!=''&&inputRef2.current!=''){
+    //         await addDoc()
+    //     }
+    // }
 
     return (
         <>
@@ -47,8 +47,8 @@ export default function Todo(){
                         >+</button>
                     </form>
                     <ul>
-                        {items.map((item)=>(
-                            <li className="flex justify-between w-full my-4 bg-slate-950">
+                        {items.map((item,id)=>(
+                            <li key={id} className="flex justify-between w-full my-4 bg-slate-950">
                                 <div className="flex justify-between w-full p-4">
                                     <span className="capitalize">{item.name}</span>
                                     <span>${item.price.trim()}</span>

@@ -48,7 +48,7 @@ export default function ChartRadar() {
     }
     //useeffect to re-render handleonload when data change. the reason that we don't useeffect on chart() is that chart is not defined on react, it is called from chart.js cdn. 
     useEffect(() => {
-        handleOnLoad()
+        handleOnLoad();
     }, [datasetsData1, datasetsData2])
 
     const config = {
