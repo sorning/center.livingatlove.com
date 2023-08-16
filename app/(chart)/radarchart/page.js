@@ -2,11 +2,31 @@
 
 import Script from "next/script"
 import { useRef, useEffect, useState } from "react"
+import {query, onSnapshot, collection,collectionGroup} from 'firebase/firestore'
+import { db } from "@/lib/firebase"
 
 export default function ChartRadar() {
     const chartRef = useRef()
     const [datasetsData1, setDatasetsData1] = useState([80, 80, 80, 80, 80, 80, 80])
     const [datasetsData2, setDatasetsData2] = useState([75, 48, 40, 19, 96, 27, 100])
+    const [datasetsData22, setDatasetsData22] = useState([75, 48, 40, 19, 96, 27, 100])
+
+    useEffect(()=>{
+        const q=query(collection(db,'radarItems'))
+        const unsubscribe=onSnapshot(q,(querysnapshot)=>{
+            const itemsArray=[]
+            querysnapshot.forEach((doc)=>{
+                itemsArray.push({...doc.data(),id:doc.id})
+            })
+            console.log(itemsArray[0].DayData,itemsArray[0].myData)
+            setDatasetsData22(itemsArray[0].myData)
+            console.log(datasetsData2)
+        })
+        
+        return ()=>unsubscribe()
+    },[])
+    
+
 
     const configData = {
         labels: [
@@ -45,6 +65,7 @@ export default function ChartRadar() {
         try {
             await new Chart(chartRef.current, config)
         } catch { console.log("error") }
+        setDatasetsData2(datasetsData22)
     }
     //useeffect to re-render handleonload when data change. the reason that we don't useeffect on chart() is that chart is not defined on react, it is called from chart.js cdn. 
     useEffect(() => {

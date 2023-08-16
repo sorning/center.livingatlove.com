@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
-import { db } from '../../lib/firebase'
-import { addDoc, collection, query, onSnapshot } from 'firebase/firestore'
+import { db } from '../../../lib/firebase'
+import { addDoc, collection, query, onSnapshot, collectionGroup } from 'firebase/firestore'
 import Image from 'next/image'
 
 
@@ -16,6 +16,8 @@ export default function Example() {
     const [quartzItems, setQuartzItems] = useState([])
 
     useEffect(() => {
+        // const q = query(collection(db, 'quartz','X48linRylkYIqaioapKD','Images'))
+        // const q=query(collectionGroup(db,'Images'))
         const q = query(collection(db, 'quartz'))
         const unsubscribe = onSnapshot(q, (querysnapshot) => {
             const itemsArray = []
@@ -27,7 +29,7 @@ export default function Example() {
         })
     }, [])
 
-    console.log('quartzItems', quartzItems[0])
+    console.log('quartzItems', quartzItems)
     return (
         <div className="bg-white">
             <div className='flex items-center justify-center w-full'>
