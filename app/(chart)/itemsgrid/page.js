@@ -1,6 +1,28 @@
+'use client'
+
 import Link from "next/link";
+import { db } from "@/lib/firebase";
+import { onSnapshot, query } from 'firebase/firestore'
+import { useEffect, useState } from "react";
 
 export default function ItemsGrid() {
+    const [aliWorkItems, setAliWorkItems] = useState()
+
+    //read items from firestore
+    useEffect(() => {
+        const q = query(collection('aliItems'))
+        const unsubscribe = onSnapshot(q, (querysnapshot) => {
+            const itemsArray = []
+            querysnapshot.forEach((doc) => {
+                itemsArray.push({ ...doc.data(), id: doc.id })
+            })
+            setAliWorkItems(itemsArray)
+
+            return () => unsubscribe()
+        })
+    }, [])
+
+
     return (
         <>
             <div className="bg-slate-900 space-y-4 p-4 sm:py-6 sm:px-8">
@@ -30,12 +52,12 @@ export default function ItemsGrid() {
                     <Link href='/' className="">
                         <div className="grid sm:grid-cols-2 items-center">
                             <div>
-                            <div>
-                                <h1 className="text-slate-100 font-semibold group-hover:text-slate-300 py-1">Item.Title</h1>
-                            </div>
-                            <div>
-                                <p className="text-slate-100 font-semibold group-hover:text-slate-300 py-1">item.Description</p>
-                            </div>
+                                <div>
+                                    <h1 className="text-slate-100 font-semibold group-hover:text-slate-300 py-1">Item.Title</h1>
+                                </div>
+                                <div>
+                                    <p className="text-slate-100 font-semibold group-hover:text-slate-300 py-1">item.Description</p>
+                                </div>
                             </div>
                             <div className="flex sm:justify-end">
                                 <button className="py-1 bg-blue-500 rounded px-2 mt-2 hover:bg-purple-700 group-hover:bg-purple-900">Edit</button>
