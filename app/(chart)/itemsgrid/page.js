@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { db } from "@/lib/firebase";
-import { onSnapshot, query } from 'firebase/firestore'
+import { onSnapshot, query,collection } from 'firebase/firestore'
 import { useEffect, useState } from "react";
 
 export default function ItemsGrid() {
@@ -10,7 +10,7 @@ export default function ItemsGrid() {
 
     //read items from firestore
     useEffect(() => {
-        const q = query(collection('aliItems'))
+        const q = query(collection(db,'aliItems'))
         const unsubscribe = onSnapshot(q, (querysnapshot) => {
             const itemsArray = []
             querysnapshot.forEach((doc) => {
